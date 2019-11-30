@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import {
   HashRouter,
   Route,
@@ -11,8 +11,8 @@ const Login = React.lazy(()=>import('./Layout/Login'));
 
 const App = () => {
   return (
-    <>
-      <HashRouter>
+    <HashRouter>
+      <Suspense fallback={<div>Loading...</div>}>
         <Switch>
         <Route 
             path="/register"
@@ -27,8 +27,8 @@ const App = () => {
             render={props => <Login {...props}/>}
           />
         </Switch>
-      </HashRouter>
-    </>
+      </Suspense>
+    </HashRouter>
   );
 }
 
