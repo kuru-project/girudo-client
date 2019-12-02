@@ -4,6 +4,8 @@ import Axios from 'axios'
 import DayPicker from 'react-day-picker'
 import 'react-day-picker/lib/style.css'
 import Moment from 'moment'
+import {Elements, StripeProvider} from 'react-stripe-elements';
+import CheckoutForm from '../Components/CheckoutForm'
 
 class Book extends React.Component {
   constructor(props) {
@@ -11,7 +13,7 @@ class Book extends React.Component {
     // eslint-disable-next-line
     const user = eval('(' + sessionStorage.user + ')');
     this.state = {
-      date: Moment(new Date).format("MM/DD/YYYY"),
+      date: Moment(new Date()).format("MM/DD/YYYY"),
       contactNumber: user.contactNumber,
       artistId: this.props.match.params.user_id,
       bookerId: user.id,
@@ -71,6 +73,17 @@ class Book extends React.Component {
             />
           </div>
           <input className={inputFieldStyle} onChange={this.handleChange} name="location" placeholder="Location" />
+          <StripeProvider apiKey="pk_test_fzHvoH6sHiv0C595hdTUqt1L00AoGm1H9G">
+            <div>
+              <h1 className="text-center py-5">Sample Payment</h1>
+              <div className="d-flex justify-content-center">
+                <Elements>
+                  <CheckoutForm />
+                </Elements>
+              </div>
+              <button className={buttonStyle + " mb-5"} onClick={this.proceedToPayment}>Proceed to Payment</button>
+            </div>
+          </StripeProvider>
           <button className={buttonStyle} onClick={this.handleSubmit}>Book</button>
         </form>
       </div>
