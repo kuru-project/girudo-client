@@ -17,6 +17,7 @@ class Header extends React.Component {
   }
 
   render() {
+    // eslint-disable-next-line
     const user = eval('(' + sessionStorage.user + ')');
     return(
       <header className="bg-red-700 py-5 text-white">
