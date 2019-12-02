@@ -28,7 +28,7 @@ class ProfileUpdate extends React.Component {
         'x-auth-token': sessionStorage.token
       }
     }).then(function(response) {
-      window.location.replace(`/profile/${this.props.match.params.user_id}`);
+      window.location.replace('/');
     }).catch(function(error) {
       console.log("Something went wrong.")
     })
