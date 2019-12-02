@@ -5,6 +5,7 @@ import Axios from 'axios'
 class Book extends React.Component {
   constructor(props) {
     super(props)
+    // eslint-disable-next-line
     const user = eval('(' + sessionStorage.user + ')');
     this.state = {
       timestamp: 1,
@@ -53,9 +54,6 @@ class Book extends React.Component {
         </Helmet>
         <form>
           <input className={inputFieldStyle} onChange={this.handleChange} name="timestamp" placeholder="Timestamp" />
-          <input className={inputFieldStyle} onChange={this.handleChange} name="contactNumber" value={this.state.contactNumber} />
-          <input className={inputFieldStyle} onChange={this.handleChange} name="artistId" value={this.state.artistId} />
-          <input className={inputFieldStyle} onChange={this.handleChange} name="bookerId" value={this.state.bookerId} />
           <input className={inputFieldStyle} onChange={this.handleChange} name="location" placeholder="Location" />
           <button className={buttonStyle} onClick={this.handleSubmit}>Submit</button>
         </form>
