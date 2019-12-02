@@ -6,8 +6,8 @@ import {
 } from 'react-router-dom';
 
 
-const Register = React.lazy(()=>import('./Layout/Register'));
-const Login = React.lazy(()=>import('./Layout/Login'));
+const Register  = React.lazy(()=>import('./Layout/Register'))
+const Login     = React.lazy(()=>import('./Layout/Login'))
 
 const App = () => {
   return (
@@ -32,4 +32,4 @@ const App = () => {
   );
 }
 
-export default App;
+export default App
