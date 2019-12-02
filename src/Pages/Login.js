@@ -10,16 +10,19 @@ class Login extends React.Component {
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
+
   handleChange(event) {
     this.setState({
       [event.target.name]: event.target.value
     })
   }
+
   handleSubmit(event) {
     console.log("Email:", this.state.email)
     console.log("Password:", this.state.password)
     event.preventDefault()
   }
+
   render() {
     return(
       <div>
