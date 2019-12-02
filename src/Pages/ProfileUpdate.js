@@ -7,7 +7,6 @@ class ProfileUpdate extends React.Component {
     super(props)
     this.state = {
       name: '',
-      email: '',
       skills: ''
     }
     this.handleChange = this.handleChange.bind(this)
@@ -23,7 +22,6 @@ class ProfileUpdate extends React.Component {
   handleSubmit(event) {
     Axios.patch(`http://localhost:4000/user/${this.props.match.params.user_id}/update`, {
       'name': this.state.name,
-      'email': this.state.email,
       'skills': [this.state.skills]
     }, {
       headers: {
@@ -46,7 +44,6 @@ class ProfileUpdate extends React.Component {
         </Helmet>
         <form>
           <input className={inputFieldStyle} onChange={this.handleChange} name="name" placeholder="Name" />
-          <input className={inputFieldStyle} onChange={this.handleChange} name="email" type="email" placeholder="Email" />
           <input className={inputFieldStyle} onChange={this.handleChange} name="skills" placeholder="Skills" />
           <button className={buttonStyle} onClick={this.handleSubmit}>Submit</button>
         </form>
