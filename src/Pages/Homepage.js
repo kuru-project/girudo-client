@@ -27,13 +27,16 @@ class Homepage extends React.Component {
         <Helmet>
           <title>Homepage</title>
         </Helmet>
-        {this.state.artists.map((artist, index) => {
-          return (
-            <div key={index}>
-              <Link className="hover:underline" to={`/profile/${artist._id}`}>{ artist.name }</Link>
-            </div>
-          )
-        })}
+        <h1 className="text-3xl mb-5">Artists</h1>
+        <ul>
+          {this.state.artists.map((artist, index) => {
+            return (
+              <li key={index}>
+                {index+1}. <Link className="hover:underline" to={`/profile/${artist._id}`}>{ artist.name }</Link>
+              </li>
+            )
+          })}
+        </ul>
       </div>
     )
   }
