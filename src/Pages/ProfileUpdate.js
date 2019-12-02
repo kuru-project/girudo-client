@@ -30,8 +30,6 @@ class ProfileUpdate extends React.Component {
         'x-auth-token': sessionStorage.token
       }
     }).then(function(response) {
-      sessionStorage.token = response.data.token;
-      sessionStorage.user = JSON.stringify(response.data.user);
       window.location.replace(`/profile/${this.props.match.params.user_id}`);
     }).catch(function(error) {
       console.log("Something went wrong.")
