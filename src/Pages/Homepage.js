@@ -10,6 +10,7 @@ class Homepage extends React.Component {
       artists: []
     }
   }
+
   componentDidMount() {
     Axios.get('http://localhost:4000/artist')
       .then((response) => {
@@ -21,6 +22,7 @@ class Homepage extends React.Component {
         console.log(error);
       })
   }
+
   render() {
     return (
       <div className="my-5">
