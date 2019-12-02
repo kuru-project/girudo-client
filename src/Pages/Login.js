@@ -35,11 +35,11 @@ class Login extends React.Component {
 
   render() {
     return(
-      <div>
+      <div className="my-5">
         <Helmet>
           <title>Login</title>
         </Helmet>
-        <div className="my-5">
+        <div className="mb-5">
           Login Email: admin@account.com<br />
           Login Password: 12345678
         </div>

@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet";
 
 const Homepage = () => {
   return (
-    <div>
+    <div className="my-5">
       <Helmet>
         <title>Homepage</title>
       </Helmet>
