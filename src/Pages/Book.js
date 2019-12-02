@@ -5,11 +5,12 @@ import Axios from 'axios'
 class Book extends React.Component {
   constructor(props) {
     super(props)
+    const user = eval('(' + sessionStorage.user + ')');
     this.state = {
       timestamp: 1,
-      contactNumber: 0,
-      artistId: '',
-      bookerId: '',
+      contactNumber: user.contactNumber,
+      artistId: this.props.match.params.user_id,
+      bookerId: user.id,
       location: ''
     }
     this.handleChange = this.handleChange.bind(this)
@@ -46,7 +47,6 @@ class Book extends React.Component {
     const inputFieldStyle = "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-5"
     const buttonStyle     = "block w-full text-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
     // eslint-disable-next-line
-    const user = eval('(' + sessionStorage.user + ')');
     return (
       <div className="my-5">
         <Helmet>
@@ -54,9 +54,9 @@ class Book extends React.Component {
         </Helmet>
         <form>
           <input className={inputFieldStyle} onChange={this.handleChange} name="timestamp" placeholder="Timestamp" />
-          <input className={inputFieldStyle} onChange={this.handleChange} name="contactNumber" value={user.contactNumber} />
-          <input className={inputFieldStyle} onChange={this.handleChange} name="artistId" value={this.props.match.params.user_id} />
-          <input className={inputFieldStyle} onChange={this.handleChange} name="bookerId" value={user.id} />
+          <input className={inputFieldStyle} onChange={this.handleChange} name="contactNumber" value={this.state.contactNumber} />
+          <input className={inputFieldStyle} onChange={this.handleChange} name="artistId" value={this.state.artistId} />
+          <input className={inputFieldStyle} onChange={this.handleChange} name="bookerId" value={this.state.bookerId} />
           <input className={inputFieldStyle} onChange={this.handleChange} name="location" placeholder="Location" />
           <button className={buttonStyle} onClick={this.handleSubmit}>Submit</button>
         </form>
