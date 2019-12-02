@@ -24,7 +24,6 @@ class Book extends React.Component {
   }
 
   handleSubmit(event) {
-    console.log(this.state)
     Axios.post(`http://localhost:4000/book/new`, {
       'timestamp': this.state.timestamp,
       'contactNumber': this.state.contactNumber,
