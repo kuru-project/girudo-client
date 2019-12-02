@@ -81,7 +81,6 @@ class Book extends React.Component {
                   <CheckoutForm />
                 </Elements>
               </div>
-              <button className={buttonStyle + " mb-5"} onClick={this.proceedToPayment}>Proceed to Payment</button>
             </div>
           </StripeProvider>
           <button className={buttonStyle} onClick={this.handleSubmit}>Book</button>
