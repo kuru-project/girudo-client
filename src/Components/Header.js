@@ -33,7 +33,8 @@ class Header extends React.Component {
               </Display>
               <Display toggle={this.state.sessionStorage.length}>
                 <li className="mr-3"><button className="hover:underline" onClick={this.logOut}>Log Out</button></li>
-                <li><Link className="hover:underline" to={`/profile/${user ? user.id : ''}`}>Profile</Link></li>
+                <li className="mr-3"><Link className="hover:underline" to={`/profile/${user ? user.id : ''}`}>Profile</Link></li>
+                <li><Link className="hover:underline" to={`/`}>Bookings</Link></li>
               </Display>
             </ul>
           </div>
