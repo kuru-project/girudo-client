@@ -1,6 +1,7 @@
 import React from 'react'
 import { Helmet } from "react-helmet"
 import Axios from 'axios'
+import { Link } from 'react-router-dom'
 
 class Homepage extends React.Component {
   constructor(props){
@@ -27,7 +28,11 @@ class Homepage extends React.Component {
           <title>Homepage</title>
         </Helmet>
         {this.state.artists.map((artist, index) => {
-          return (<div key={index}>{ artist.name }</div>)
+          return (
+            <div key={index}>
+              <Link className="hover:underline" to={`/profile/${artist._id}`}>{ artist.name }</Link>
+            </div>
+          )
         })}
       </div>
     )
