@@ -1,19 +1,23 @@
-import React, { Suspense } from 'react';
+import React, { Suspense } from 'react'
 import {
   HashRouter,
   Route,
   Switch
-} from 'react-router-dom';
+} from 'react-router-dom'
 
 
 const Register  = React.lazy(()=>import('./Pages/Register'))
 const Login     = React.lazy(()=>import('./Pages/Login'))
 const Homepage  = React.lazy(()=>import('./Pages/Homepage'))
 
+const Header    = React.lazy(()=>import('./Components/Header'))
+const Footer    = React.lazy(()=>import('./Components/Footer'))
+
 const App = () => {
   return (
     <HashRouter>
       <Suspense fallback={<div>Loading...</div>}>
+        <Header />
         <Switch>
           <Route 
             path="/"
@@ -34,6 +38,7 @@ const App = () => {
             render={ props => <Login {...props}/> }
           />
         </Switch>
+        <Footer />
       </Suspense>
     </HashRouter>
   );
