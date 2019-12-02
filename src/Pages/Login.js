@@ -33,6 +33,10 @@ class Login extends React.Component {
   render() {
     return(
       <div>
+        <div className="my-5">
+          Login Email: admin@account.com<br />
+          Login Password: 12345678
+        </div>
         <form>
           <input onChange={this.handleChange} name="email" type="email" placeholder="Email" />
           <input onChange={this.handleChange} name="password" type="password" placeholder="Password" current-password="true" autoComplete="off" />
