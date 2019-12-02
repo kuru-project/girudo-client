@@ -17,7 +17,7 @@ const App = () => {
   return (
     <HashRouter>
       <Suspense fallback={<div>Loading...</div>}>
-        <div className="flex flex-col min-h-full">
+        <div className="flex flex-col min-h-screen">
           <Header />
           <div className="container mx-auto my-auto">
             <Switch>
