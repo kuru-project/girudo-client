@@ -11,6 +11,7 @@ const Login         = React.lazy(()=>import('./Pages/Login'))
 const Homepage      = React.lazy(()=>import('./Pages/Homepage'))
 const Profile       = React.lazy(()=>import('./Pages/Profile'))
 const ProfileUpdate = React.lazy(()=>import('./Pages/ProfileUpdate'))
+const Book          = React.lazy(()=>import('./Pages/Book'))
 
 const Header    = React.lazy(()=>import('./Components/Header'))
 const Footer    = React.lazy(()=>import('./Components/Footer'))
@@ -52,6 +53,12 @@ const App = () => {
                 exact
                 name="Profile Update"
                 render={ props => <ProfileUpdate {...props}/> }
+              />
+              <Route
+                path="/book/:user_id"
+                exact
+                name="Book"
+                render={ props => <Book {...props}/> }
               />
             </Switch>
           </div>
