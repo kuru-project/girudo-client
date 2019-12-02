@@ -1,6 +1,9 @@
 import React from 'react'
 import { Helmet } from "react-helmet"
 import Axios from 'axios'
+import DayPicker from 'react-day-picker'
+import 'react-day-picker/lib/style.css'
+import Moment from 'moment'
 
 class Book extends React.Component {
   constructor(props) {
@@ -8,14 +11,21 @@ class Book extends React.Component {
     // eslint-disable-next-line
     const user = eval('(' + sessionStorage.user + ')');
     this.state = {
-      timestamp: 1,
+      date: Moment(new Date).format("MM/DD/YYYY"),
       contactNumber: user.contactNumber,
       artistId: this.props.match.params.user_id,
       bookerId: user.id,
       location: ''
     }
-    this.handleChange = this.handleChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleChange   = this.handleChange.bind(this)
+    this.handleDayClick = this.handleDayClick.bind(this)
+    this.handleSubmit   = this.handleSubmit.bind(this)
+  }
+
+  handleDayClick(day) {
+    this.setState({
+      date: day
+    })
   }
 
   handleChange(event) {
@@ -26,7 +36,7 @@ class Book extends React.Component {
 
   handleSubmit(event) {
     Axios.post(`http://localhost:4000/book/new`, {
-      'timestamp': this.state.timestamp,
+      'date': this.state.date,
       'contactNumber': this.state.contactNumber,
       'artistId': this.state.artistId,
       'bookerId': this.state.bookerId,
@@ -53,7 +63,13 @@ class Book extends React.Component {
           <title>Book</title>
         </Helmet>
         <form>
-          <input className={inputFieldStyle} onChange={this.handleChange} name="timestamp" placeholder="Timestamp" />
+          <div>
+            <DayPicker
+              onDayClick={this.handleDayClick}
+              showOutsideDays
+              disableDays={[new Date(), { daysOfWeek: [0,6] }, new Date(2019, 11, 26)]}
+            />
+          </div>
           <input className={inputFieldStyle} onChange={this.handleChange} name="location" placeholder="Location" />
           <button className={buttonStyle} onClick={this.handleSubmit}>Submit</button>
         </form>
