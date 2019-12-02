@@ -23,7 +23,9 @@ class Login extends React.Component {
       'email': this.state.email,
       'password': this.state.password
     }).then(function(response) {
-      console.log(response)
+      sessionStorage.token = response.data.token;
+      sessionStorage.user = response.data.user;
+      window.location.replace("/");
     }).catch(function(error) {
       console.log("Something went wrong.")
     })
