@@ -1,5 +1,6 @@
 import React from 'react'
 import Axios from 'axios'
+import { Helmet } from 'react-helmet'
 
 class Register extends React.Component {
   constructor(props) {
@@ -37,6 +38,9 @@ class Register extends React.Component {
   render() {
     return(
       <div>
+        <Helmet>
+          <title>Register</title>
+        </Helmet>
         <form>
           <input onChange={this.handleChange} name="name" placeholder="Name" />
           <input onChange={this.handleChange} name="email" type="email" placeholder="Email" />

@@ -1,5 +1,6 @@
 import React from 'react'
 import Axios from 'axios'
+import { Helmet } from 'react-helmet'
 
 class Login extends React.Component {
   constructor(props) {
@@ -35,6 +36,9 @@ class Login extends React.Component {
   render() {
     return(
       <div>
+        <Helmet>
+          <title>Login</title>
+        </Helmet>
         <div className="my-5">
           Login Email: admin@account.com<br />
           Login Password: 12345678
