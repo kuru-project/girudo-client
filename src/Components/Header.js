@@ -17,6 +17,7 @@ class Header extends React.Component {
   }
 
   render() {
+    const user = eval('(' + sessionStorage.user + ')');
     return(
       <header className="bg-red-700 py-5 text-white">
         <div className="container mx-auto flex">
@@ -24,17 +25,16 @@ class Header extends React.Component {
             <Link className="hover:underline" to="/"><h1>Maven</h1></Link>
           </div>
           <div>
-            <Display toggle={!(this.state.sessionStorage.length)}>
-              <ul className="flex">
-                <li className="mr-3"><Link className="hover:underline" to="/login">Login</Link></li>
-                <li><Link className="hover:underline" to="/register">Register</Link></li>
-              </ul>
-            </Display>
-            <Display toggle={this.state.sessionStorage.length}>
-              <button onClick={this.logOut}>
-                Log Out
-              </button>
-            </Display>
+            <ul className="flex">
+              <Display toggle={!(this.state.sessionStorage.length)}>
+                  <li className="mr-3"><Link className="hover:underline" to="/login">Login</Link></li>
+                  <li><Link className="hover:underline" to="/register">Register</Link></li>
+              </Display>
+              <Display toggle={this.state.sessionStorage.length}>
+                <li className="mr-3"><button className="hover:underline" onClick={this.logOut}>Log Out</button></li>
+                <li><Link className="hover:underline" to={`/profile/${user.id}`}>Profile</Link></li>
+              </Display>
+            </ul>
           </div>
         </div>
       </header>

@@ -27,7 +27,7 @@ class Register extends React.Component {
       'password': this.state.password
     }).then(function(response) {
       sessionStorage.token = response.data.token;
-      sessionStorage.user = response.data.user;
+      sessionStorage.user = JSON.stringify(response.data.user);
       window.location.replace("/");
     }).catch(function(error) {
       console.log("Something went wrong.")
