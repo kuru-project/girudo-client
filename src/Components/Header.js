@@ -18,7 +18,7 @@ class Header extends React.Component {
 
   render() {
     // eslint-disable-next-line
-    const user = eval('(' + sessionStorage.user + ')');
+    const user = eval('(' + this.state.sessionStorage.user + ')');
     return(
       <header className="bg-red-700 py-5 text-white">
         <div className="container mx-auto flex">
@@ -33,7 +33,7 @@ class Header extends React.Component {
               </Display>
               <Display toggle={this.state.sessionStorage.length}>
                 <li className="mr-3"><button className="hover:underline" onClick={this.logOut}>Log Out</button></li>
-                <li><Link className="hover:underline" to={`/profile/${user.id}`}>Profile</Link></li>
+                <li><Link className="hover:underline" to={`/profile/${user ? user.id : ''}`}>Profile</Link></li>
               </Display>
             </ul>
           </div>

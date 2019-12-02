@@ -6,10 +6,11 @@ import {
 } from 'react-router-dom'
 
 
-const Register  = React.lazy(()=>import('./Pages/Register'))
-const Login     = React.lazy(()=>import('./Pages/Login'))
-const Homepage  = React.lazy(()=>import('./Pages/Homepage'))
-const Profile   = React.lazy(()=>import('./Pages/Profile'))
+const Register      = React.lazy(()=>import('./Pages/Register'))
+const Login         = React.lazy(()=>import('./Pages/Login'))
+const Homepage      = React.lazy(()=>import('./Pages/Homepage'))
+const Profile       = React.lazy(()=>import('./Pages/Profile'))
+const ProfileUpdate = React.lazy(()=>import('./Pages/ProfileUpdate'))
 
 const Header    = React.lazy(()=>import('./Components/Header'))
 const Footer    = React.lazy(()=>import('./Components/Footer'))
@@ -45,6 +46,12 @@ const App = () => {
                 exact
                 name="Profile"
                 render={ props => <Profile {...props}/> }
+              />
+              <Route
+                path="/profile/:user_id/update"
+                exact
+                name="Profile Update"
+                render={ props => <ProfileUpdate {...props}/> }
               />
             </Switch>
           </div>
