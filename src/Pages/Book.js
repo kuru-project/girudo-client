@@ -71,7 +71,7 @@ class Book extends React.Component {
             />
           </div>
           <input className={inputFieldStyle} onChange={this.handleChange} name="location" placeholder="Location" />
-          <button className={buttonStyle} onClick={this.handleSubmit}>Submit</button>
+          <button className={buttonStyle} onClick={this.handleSubmit}>Book</button>
         </form>
       </div>
     )
