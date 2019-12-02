@@ -17,28 +17,32 @@ const App = () => {
   return (
     <HashRouter>
       <Suspense fallback={<div>Loading...</div>}>
-        <Header />
-        <Switch>
-          <Route 
-            path="/"
-            exact
-            name="Homepage"
-            render={ props => <Homepage {...props} /> }
-          />
-          <Route 
-            path="/register"
-            exact
-            name="Register"
-            render={ props => <Register {...props} /> }
-          />
-          <Route 
-            path="/login"
-            exact
-            name="Login"
-            render={ props => <Login {...props}/> }
-          />
-        </Switch>
-        <Footer />
+        <div className="flex flex-col min-h-full">
+          <Header />
+          <div className="container mx-auto my-auto">
+            <Switch>
+              <Route
+                path="/"
+                exact
+                name="Homepage"
+                render={ props => <Homepage {...props} /> }
+              />
+              <Route
+                path="/register"
+                exact
+                name="Register"
+                render={ props => <Register {...props} /> }
+              />
+              <Route
+                path="/login"
+                exact
+                name="Login"
+                render={ props => <Login {...props}/> }
+              />
+            </Switch>
+          </div>
+          <Footer />
+        </div>
       </Suspense>
     </HashRouter>
   );

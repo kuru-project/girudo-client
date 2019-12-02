@@ -3,11 +3,7 @@ import React from 'react'
 class Display extends React.Component {
   render() {
     return(
-      <>
-        {
-          this.props.toggle ? <div>{this.props.children}</div> : null
-        }
-      </>
+      <>{ this.props.toggle ? this.props.children : null }</>
     )
   }
 }

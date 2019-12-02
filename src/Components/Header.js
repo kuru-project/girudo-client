@@ -17,13 +17,18 @@ class Header extends React.Component {
 
   render() {
     return(
-      <header>
-        This is the header
-        <Display toggle={this.state.sessionStorage.length}>
-          <button onClick={this.logOut}>
-            Log Out
-          </button>
-        </Display>
+      <header className="bg-red-700 py-5 text-white">
+        <div className="container mx-auto flex">
+          <div className="mr-auto">this is the logo</div>
+          <div>
+            This is the header
+            <Display toggle={this.state.sessionStorage.length}>
+              <button onClick={this.logOut}>
+                Log Out
+              </button>
+            </Display>
+          </div>
+        </div>
       </header>
     )
   }
