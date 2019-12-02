@@ -34,19 +34,22 @@ class Login extends React.Component {
   }
 
   render() {
+    const inputFieldStyle = "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-5"
+    const buttonStyle     = "block w-full text-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+    const textStyle       = "block text-gray-700 text-sm font-bold mb-2"
     return(
       <div className="my-5">
         <Helmet>
           <title>Login</title>
         </Helmet>
         <div className="mb-5">
-          Login Email: admin@account.com<br />
-          Login Password: 12345678
+          <div className="block text-gray-700 text-sm font-bold mb-2">Login Email: admin@account.com</div>
+          <div className="block text-gray-700 text-sm font-bold mb-2">Login Password: 12345678</div>
         </div>
         <form>
-          <input onChange={this.handleChange} name="email" type="email" placeholder="Email" />
-          <input onChange={this.handleChange} name="password" type="password" placeholder="Password" current-password="true" autoComplete="off" />
-          <button onClick={this.handleSubmit}>Submit</button>
+          <input className={inputFieldStyle} onChange={this.handleChange} name="email" type="email" placeholder="Email" />
+          <input className={inputFieldStyle} onChange={this.handleChange} name="password" type="password" placeholder="Password" current-password="true" autoComplete="off" />
+          <button className={buttonStyle} onClick={this.handleSubmit}>Submit</button>
         </form>
       </div>
     )
