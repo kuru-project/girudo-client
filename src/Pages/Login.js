@@ -43,8 +43,8 @@ class Login extends React.Component {
           <title>Login</title>
         </Helmet>
         <div className="mb-5">
-          <div className="block text-gray-700 text-sm font-bold mb-2">Login Email: admin@account.com</div>
-          <div className="block text-gray-700 text-sm font-bold mb-2">Login Password: 12345678</div>
+          <div className={textStyle}>Login Email: admin@account.com</div>
+          <div className={textStyle}>Login Password: 12345678</div>
         </div>
         <form>
           <input className={inputFieldStyle} onChange={this.handleChange} name="email" type="email" placeholder="Email" />

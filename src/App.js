@@ -9,6 +9,7 @@ import {
 const Register  = React.lazy(()=>import('./Pages/Register'))
 const Login     = React.lazy(()=>import('./Pages/Login'))
 const Homepage  = React.lazy(()=>import('./Pages/Homepage'))
+const Profile   = React.lazy(()=>import('./Pages/Profile'))
 
 const Header    = React.lazy(()=>import('./Components/Header'))
 const Footer    = React.lazy(()=>import('./Components/Footer'))
@@ -38,6 +39,12 @@ const App = () => {
                 exact
                 name="Login"
                 render={ props => <Login {...props}/> }
+              />
+              <Route
+                path="/profile/:user_id"
+                exact
+                name="Profile"
+                render={ props => <Profile {...props}/> }
               />
             </Switch>
           </div>

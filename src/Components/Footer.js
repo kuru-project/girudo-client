@@ -1,6 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-import Display from './Display'
 
 class Footer extends React.Component {
   constructor(props) {
