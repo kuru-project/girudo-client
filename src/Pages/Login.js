@@ -19,7 +19,7 @@ class Login extends React.Component {
   }
 
   handleSubmit(event) {
-    Axios.post('localhost:4000/login', {
+    Axios.post('http://localhost:4000/login', {
       'email': this.state.email,
       'password': this.state.password
     }).then(function(response) {
