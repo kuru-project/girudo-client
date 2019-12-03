@@ -29,7 +29,10 @@ class ProfileUpdate extends React.Component {
       sessionStorage.clear()
       window.location.replace("/")
     }).catch(function(error) {
-      console.log("Something went wrong.")
+      createSnackbar('Something went wrong!', {
+        position: 'right',
+        timeout: 2000
+      })
     })
     event.preventDefault()
   }
@@ -60,7 +63,9 @@ class ProfileUpdate extends React.Component {
         'x-auth-token': sessionStorage.token
       }
     }).then(function(response) {
-      window.location.replace('/');
+      // eslint-disable-next-line
+      const user = eval('(' + sessionStorage.user + ')');
+      window.location.replace('/#/profile/' + user.id);
     }).catch(function(error) {
       createSnackbar('Something went wrong!', {
         position: 'right',
