@@ -1,6 +1,7 @@
 import React from 'react'
 import Display from './Display'
 import { Link } from 'react-router-dom'
+import ReactTooltip from 'react-tooltip'
 
 class Header extends React.Component {
   constructor(props) {
@@ -17,18 +18,29 @@ class Header extends React.Component {
     // eslint-disable-next-line
     const user = eval('(' + sessionStorage.user + ')');
     return(
-      <header className="bg-white py-3 text-black border-b border-gray-200">
+      <header className="bg-white py-3 border-b border-gray-200">
+        <ReactTooltip />
         <div className="container mx-auto flex items-center">
           <div className="mr-auto">
-            <Link className="hover:underline" to="/">
-              <span className="text-3xl"><i className="fab fa-medium"></i></span>
+            <Link className="flex items-center" to="/" data-tip="Maven">
+              <span className="text-4xl mr-3 text-green-500"><i className="fab fa-artstation"></i></span>
             </Link>
           </div>
           <div>
             <ul className="flex">
               <Display toggle={!(sessionStorage.length)}>
-                  <li className="mr-3"><Link className="hover:underline" to="/login">Login</Link></li>
-                  <li><Link className="hover:underline" to="/register">Register</Link></li>
+                <li className="mr-5">
+                  <Link className="hover:opacity-50 smooth" to="/login">
+                      <span className="mr-2"><i className="fas fa-sign-in-alt"></i></span>
+                      <span>Login</span>
+                  </Link>
+                </li>
+                  <li>
+                    <Link className="smooth rounded text-white hover:bg-white hover:text-green-500 bg-green-500 py-3 px-5 border-solid border-2 border-green-500" to="/register">
+                      <span className="mr-2"><i className="fas fa-user-plus"></i></span>
+                      <span>Register</span>
+                    </Link>
+                  </li>
               </Display>
               <Display toggle={sessionStorage.length}>
                 <li className="mr-3"><button className="hover:underline" onClick={this.logOut}>Log Out</button></li>
