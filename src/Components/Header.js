@@ -49,6 +49,14 @@ class Header extends React.Component {
                     <span>Profile</span>
                   </Link>
                 </li>
+                <Display toggle={user ? user.isAdmin : ''}>
+                  <li className="mr-5">
+                    <Link className="hover:opacity-50 smooth" to={`/books`}>
+                      <span className="mr-2"><i className="fas fa-book"></i></span>
+                      <span>Bookings</span>
+                    </Link>
+                  </li>
+                </Display>
                 <li>
                   <button className="hover:opacity-50 smooth" onClick={this.logOut}>
                       <span className="mr-2"><i className="fas fa-sign-out-alt"></i></span>
