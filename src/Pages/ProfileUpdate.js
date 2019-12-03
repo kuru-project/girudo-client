@@ -14,7 +14,8 @@ class ProfileUpdate extends React.Component {
       isAdmin: false,
       isArtist: false,
       coverPhoto: '',
-      profilePhoto: ''
+      profilePhoto: '',
+      description: ''
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -59,7 +60,8 @@ class ProfileUpdate extends React.Component {
       'isAdmin': this.state.isAdmin,
       'isArtist': this.state.isArtist,
       'coverPhoto': this.state.coverPhoto,
-      'profilePhoto': this.state.profilePhoto
+      'profilePhoto': this.state.profilePhoto,
+      'description': this.state.description
     }, {
       headers: {
         'x-auth-token': sessionStorage.token
@@ -89,7 +91,8 @@ class ProfileUpdate extends React.Component {
           isAdmin: response.data.isAdmin,
           isArtist: response.data.isArtist,
           coverPhoto: response.data.coverPhoto,
-          profilePhoto: response.data.profilePhoto
+          profilePhoto: response.data.profilePhoto,
+          description: response.data.description
         })
       })
       .catch((error) => {
@@ -164,6 +167,12 @@ class ProfileUpdate extends React.Component {
                 Cover Photo
               </label>
               <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" onChange={this.handleChange} name="coverPhoto" id="cover_photo" value={this.state.coverPhoto} />
+            </div>
+            <div className="mb-4">
+              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="description">
+                Description
+              </label>
+              <textarea className="resize-none shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" onChange={this.handleChange} name="description" id="description" value={this.state.description} />
             </div>
             <div className="flex items-center justify-between">
               <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" onClick={this.handleSubmit}>

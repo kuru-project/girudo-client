@@ -19,7 +19,8 @@ class Profile extends React.Component {
       isAdmin: false,
       isArtist: false,
       coverPhoto: '',
-      profilePhoto: ''
+      profilePhoto: '',
+      description: ''
     }
 
     this.deleteUser = this.deleteUser.bind(this)
@@ -55,7 +56,8 @@ class Profile extends React.Component {
           isAdmin: response.data.isAdmin,
           isArtist: response.data.isArtist,
           coverPhoto: response.data.coverPhoto,
-          profilePhoto: response.data.profilePhoto
+          profilePhoto: response.data.profilePhoto,
+          description: response.data.description
         })
       })
       .catch((error) => {
@@ -76,6 +78,7 @@ class Profile extends React.Component {
         </Helmet>
         <div className="bg-cover bg-gray-300 mb-5 h-32 md:h-48 lg:h-64 bg-center" style={{ backgroundImage: `url(${this.state.coverPhoto})` }}></div>
         <div>{ this.state.profilePhoto }</div>
+        <div>{ this.state.description }</div>
         <Display toggle={sessionStorage.length}>
           <ul className="flex">
               <Display toggle={this.state.currentUser && this.state.isArtist && !(this.state.currentUser.id === this.state.id)}>
