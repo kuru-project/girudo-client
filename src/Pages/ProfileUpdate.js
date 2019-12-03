@@ -13,7 +13,8 @@ class ProfileUpdate extends React.Component {
       skill: '',
       isAdmin: false,
       isArtist: false,
-      coverPhoto: ''
+      coverPhoto: '',
+      profilePhoto: ''
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -57,7 +58,8 @@ class ProfileUpdate extends React.Component {
       'skill': this.state.skill,
       'isAdmin': this.state.isAdmin,
       'isArtist': this.state.isArtist,
-      'coverPhoto': this.state.coverPhoto
+      'coverPhoto': this.state.coverPhoto,
+      'profilePhoto': this.state.profilePhoto
     }, {
       headers: {
         'x-auth-token': sessionStorage.token
@@ -86,7 +88,8 @@ class ProfileUpdate extends React.Component {
           skill: response.data.skill,
           isAdmin: response.data.isAdmin,
           isArtist: response.data.isArtist,
-          coverPhoto: response.data.coverPhoto
+          coverPhoto: response.data.coverPhoto,
+          profilePhoto: response.data.profilePhoto
         })
       })
       .catch((error) => {
@@ -149,6 +152,12 @@ class ProfileUpdate extends React.Component {
                 Skill
               </label>
               <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" onChange={this.handleChange} name="skill" id="skill" value={this.state.skill} />
+            </div>
+            <div className="mb-4">
+              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="profile_photo">
+                Profile Photo
+              </label>
+              <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" onChange={this.handleChange} name="profilePhoto" id="profile_photo" value={this.state.profilePhoto} />
             </div>
             <div className="mb-4">
               <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="cover_photo">
