@@ -12,7 +12,8 @@ class ProfileUpdate extends React.Component {
       contactNumber: '',
       skill: '',
       isAdmin: false,
-      isArtist: false
+      isArtist: false,
+      coverPhoto: ''
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -52,7 +53,8 @@ class ProfileUpdate extends React.Component {
       'contactNumber': this.state.contactNumber,
       'skill': this.state.skill,
       'isAdmin': this.state.isAdmin,
-      'isArtist': this.state.isArtist
+      'isArtist': this.state.isArtist,
+      'coverPhoto': this.state.coverPhoto
     }, {
       headers: {
         'x-auth-token': sessionStorage.token
@@ -64,7 +66,6 @@ class ProfileUpdate extends React.Component {
         position: 'right',
         timeout: 2000
       })
-
     })
     event.preventDefault()
   }
@@ -79,11 +80,15 @@ class ProfileUpdate extends React.Component {
           contactNumber: response.data.contactNumber,
           skill: response.data.skill,
           isAdmin: response.data.isAdmin,
-          isArtist: response.data.isArtist
+          isArtist: response.data.isArtist,
+          coverPhoto: response.data.coverPhoto
         })
       })
       .catch((error) => {
-        console.log(error);
+        createSnackbar('Something went wrong!', {
+          position: 'right',
+          timeout: 2000
+        })
       })
   }
 
@@ -139,6 +144,12 @@ class ProfileUpdate extends React.Component {
                 Skill
               </label>
               <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" onChange={this.handleChange} name="skill" id="skill" value={this.state.skill} />
+            </div>
+            <div className="mb-4">
+              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="cover_photo">
+                Cover Photo
+              </label>
+              <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" onChange={this.handleChange} name="coverPhoto" id="cover_photo" value={this.state.coverPhoto} />
             </div>
             <div className="flex items-center justify-between">
               <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" onClick={this.handleSubmit}>
