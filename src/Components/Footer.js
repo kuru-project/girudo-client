@@ -10,7 +10,7 @@ class Footer extends React.Component {
 
   render() {
     return(
-      <footer className="p-3 bg-black text-white text-center">
+      <footer className="p-3 text-center border-gray-200 border-t bg-white">
         Maven &copy; {(new Date()).getFullYear()}
       </footer>
     )
