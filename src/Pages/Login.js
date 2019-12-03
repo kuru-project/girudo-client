@@ -20,7 +20,7 @@ class Login extends React.Component {
   }
 
   handleSubmit(event) {
-    Axios.post('http://localhost:4000/login', {
+    Axios.post('https://maven-server-bos.herokuapp.com/login', {
       'email': this.state.email,
       'password': this.state.password
     }).then(function(response) {

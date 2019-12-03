@@ -30,7 +30,7 @@ class ProfileUpdate extends React.Component {
 
   handleSubmit(event) {
     console.log(this.state)
-    Axios.patch(`http://localhost:4000/user/${this.props.match.params.user_id}/update`, {
+    Axios.patch(`https://maven-server-bos.herokuapp.com/user/${this.props.match.params.user_id}/update`, {
       'name': this.state.name,
       'contactNumber': this.state.contactNumber,
       'skill': this.state.skill,
@@ -51,7 +51,7 @@ class ProfileUpdate extends React.Component {
   componentDidMount() {
     // eslint-disable-next-line
     const user = eval('(' + sessionStorage.user + ')');
-    Axios.get(`http://localhost:4000/user/${user.id}`)
+    Axios.get(`https://maven-server-bos.herokuapp.com/user/${user.id}`)
       .then((response) => {
         this.setState({
           name: response.data[0].name,

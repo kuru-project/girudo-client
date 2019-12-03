@@ -37,7 +37,7 @@ class Book extends React.Component {
   }
 
   handleSubmit(event) {
-    Axios.post(`http://localhost:4000/book/new`, {
+    Axios.post(`https://maven-server-bos.herokuapp.com/book/new`, {
       'date': this.state.date,
       'contactNumber': this.state.contactNumber,
       'artistId': this.state.artistId,

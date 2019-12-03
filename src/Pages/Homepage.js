@@ -12,7 +12,7 @@ class Homepage extends React.Component {
   }
 
   componentDidMount() {
-    Axios.get('http://localhost:4000/artist')
+    Axios.get('https://maven-server-bos.herokuapp.com/artist')
       .then((response) => {
         this.setState({
           artists: response.data

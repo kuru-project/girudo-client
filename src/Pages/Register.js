@@ -21,7 +21,7 @@ class Register extends React.Component {
   }
 
   handleSubmit(event) {
-    Axios.post('http://localhost:4000/user/new', {
+    Axios.post('https://maven-server-bos.herokuapp.com/user/new', {
       'name': this.state.name,
       'email': this.state.email,
       'password': this.state.password

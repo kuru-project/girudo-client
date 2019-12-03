@@ -10,7 +10,7 @@ class Profile extends React.Component {
     this.deleteUser = this.deleteUser.bind(this)
   }
   deleteUser(event) {
-    Axios.delete(`http://localhost:4000/user/${this.props.match.params.user_id}/destroy`, {
+    Axios.delete(`https://maven-server-bos.herokuapp.com/user/${this.props.match.params.user_id}/destroy`, {
       headers: {
         'x-auth-token': sessionStorage.token
       }
