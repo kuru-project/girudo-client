@@ -35,17 +35,26 @@ class Header extends React.Component {
                       <span>Login</span>
                   </Link>
                 </li>
-                  <li>
-                    <Link className="smooth rounded text-white hover:bg-white hover:text-green-500 bg-green-500 py-3 px-5 border-solid border-2 border-green-500" to="/register">
-                      <span className="mr-2"><i className="fas fa-user-plus"></i></span>
-                      <span>Register</span>
-                    </Link>
-                  </li>
+                <li>
+                  <Link className="smooth rounded text-white hover:bg-white hover:text-green-500 bg-green-500 py-3 px-5 border-solid border-2 border-green-500" to="/register">
+                    <span className="mr-2"><i className="fas fa-user-plus"></i></span>
+                    <span>Register</span>
+                  </Link>
+                </li>
               </Display>
               <Display toggle={sessionStorage.length}>
-                <li className="mr-3"><button className="hover:underline" onClick={this.logOut}>Log Out</button></li>
-                <li className="mr-3"><Link className="hover:underline" to={`/profile/${user ? user.id : ''}`}>Profile</Link></li>
-                <li><Link className="hover:underline" to={`/`}>Bookings</Link></li>
+                <li className="mr-5">
+                  <Link className="hover:opacity-50 smooth" to={`/profile/${user ? user.id : ''}`}>
+                    <span className="mr-2"><i className="fas fa-user"></i></span>
+                    <span>Profile</span>
+                  </Link>
+                </li>
+                <li>
+                  <button className="hover:opacity-50 smooth" onClick={this.logOut}>
+                      <span className="mr-2"><i className="fas fa-sign-out-alt"></i></span>
+                      <span>Log Out</span>
+                  </button>
+                </li>
               </Display>
             </ul>
           </div>
