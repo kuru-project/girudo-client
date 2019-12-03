@@ -4,10 +4,22 @@ import { Link } from 'react-router-dom'
 import Axios from 'axios'
 import { createSnackbar } from '@snackbar/core'
 import '@snackbar/core/dist/snackbar.css'
+import Display from '../Components/Display'
 
 class Profile extends React.Component {
   constructor(props) {
     super(props)
+    this.state = {
+      // eslint-disable-next-line
+      currentUser: sessionStorage.length ? eval('(' + sessionStorage.user + ')') : false,
+      id: 'ID',
+      name: 'Name',
+      contactNumber: '0000',
+      skill: 'Skill',
+      isAdmin: false,
+      isArtist: false,
+      coverPhoto: 'https://google.com/'
+    }
 
     this.deleteUser = this.deleteUser.bind(this)
   }
@@ -32,11 +44,10 @@ class Profile extends React.Component {
   }
 
   componentDidMount() {
-    // eslint-disable-next-line
-    const user = eval('(' + sessionStorage.user + ')');
     Axios.get(`https://maven-server-bos.herokuapp.com/user/${this.props.match.params.user_id}`)
       .then((response) => {
         this.setState({
+          id: response.data._id,
           name: response.data.name,
           contactNumber: response.data.contactNumber,
           skill: response.data.skill,
@@ -61,11 +72,17 @@ class Profile extends React.Component {
         <Helmet>
           <title>Profile</title>
         </Helmet>
-        <div>yeah boi</div>
-        <ul className="flex">
-          <li className="mx-3 flex-1"><Link className={buttonStyle} to={`/profile/${this.props.match.params.user_id}/update`}>Update Profile</Link></li>
-          <li className="mx-3 flex-1"><Link className={buttonBookStyle} to={`/book/${this.props.match.params.user_id}`}>Book</Link></li>
-        </ul>
+        <div>
+          { this.state.coverPhoto }
+        </div>
+        <Display toggle={sessionStorage.length}>
+          <ul className="flex">
+              <li className="mx-3 flex-1"><Link className={buttonBookStyle} to={`/book/${this.props.match.params.user_id}`}>Book</Link></li>
+              <Display toggle={this.state.currentUser && this.state.currentUser.id === this.state.id}>
+                <li className="mx-3 flex-1"><Link className={buttonStyle} to={`/profile/${this.props.match.params.user_id}/update`}>Update Profile</Link></li>
+              </Display>
+          </ul>
+        </Display>
         { this.props.match.params.user_id }
       </div>
     )
