@@ -25,7 +25,7 @@ class Homepage extends React.Component {
 
   render() {
     return (
-      <div className="my-5">
+      <div className="my-5 container mx-auto">
         <Helmet>
           <title>Homepage</title>
         </Helmet>
