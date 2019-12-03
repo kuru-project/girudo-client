@@ -38,7 +38,6 @@ class Profile extends React.Component {
         <ul className="flex">
           <li className="mx-3 flex-1"><Link className={buttonStyle} to={`/profile/${this.props.match.params.user_id}/update`}>Update Profile</Link></li>
           <li className="mx-3 flex-1"><Link className={buttonBookStyle} to={`/book/${this.props.match.params.user_id}`}>Book</Link></li>
-          <li className="mx-3 flex-1"><button className={buttonDangerStyle} onClick={this.deleteUser}>Delete Profile</button></li>
         </ul>
         { this.props.match.params.user_id }
       </div>

@@ -3,7 +3,6 @@ import { Helmet } from "react-helmet"
 import Axios from 'axios'
 import { createSnackbar } from '@snackbar/core'
 import '@snackbar/core/dist/snackbar.css'
-import { Link } from 'react-router-dom'
 
 class ProfileUpdate extends React.Component {
   constructor(props) {
