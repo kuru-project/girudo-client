@@ -17,6 +17,21 @@ class ProfileUpdate extends React.Component {
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.deleteUser = this.deleteUser.bind(this)
+  }
+
+  deleteUser(event) {
+    Axios.delete(`https://maven-server-bos.herokuapp.com/user/${this.props.match.params.user_id}/destroy`, {
+      headers: {
+        'x-auth-token': sessionStorage.token
+      }
+    }).then(function(response) {
+      sessionStorage.clear()
+      window.location.replace("/")
+    }).catch(function(error) {
+      console.log("Something went wrong.")
+    })
+    event.preventDefault()
   }
 
   handleChange(event) {
@@ -46,7 +61,11 @@ class ProfileUpdate extends React.Component {
     }).then(function(response) {
       window.location.replace('/');
     }).catch(function(error) {
-      console.log("Something went wrong.")
+      createSnackbar('Something went wrong!', {
+        position: 'right',
+        timeout: 2000
+      })
+
     })
     event.preventDefault()
   }
@@ -123,9 +142,9 @@ class ProfileUpdate extends React.Component {
               <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" onClick={this.handleSubmit}>
                 Update Profile
               </button>
-              <Link className="inline-block align-baseline font-bold text-sm text-red-500 hover:text-red-800" to="/register">
+              <button className="inline-block align-baseline font-bold text-sm text-red-500 hover:text-red-800" onClick={this.deleteUser}>
                 Delete Account
-              </Link>
+              </button>
             </div>
           </form>
         </div>
