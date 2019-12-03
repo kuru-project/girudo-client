@@ -1,6 +1,8 @@
 import React from 'react'
 import Axios from 'axios'
 import { Helmet } from 'react-helmet'
+import { createSnackbar } from '@snackbar/core'
+import '@snackbar/core/dist/snackbar.css'
 
 class Login extends React.Component {
   constructor(props) {
@@ -28,7 +30,9 @@ class Login extends React.Component {
       sessionStorage.user = JSON.stringify(response.data.user);
       window.location.replace("/");
     }).catch(function(error) {
-      console.log("Something went wrong.")
+      createSnackbar('Something went wrong!', {
+        position: 'right'
+      })
     })
     event.preventDefault()
   }
