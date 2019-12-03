@@ -78,7 +78,7 @@ class Profile extends React.Component {
         <div>{ this.state.profilePhoto }</div>
         <Display toggle={sessionStorage.length}>
           <ul className="flex">
-              <Display toggle={this.state.currentUser && !(this.state.currentUser.id === this.state.id)}>
+              <Display toggle={this.state.currentUser && this.state.currentUser.isArtist && !(this.state.currentUser.id === this.state.id)}>
                 <li className="mx-3 flex-1"><Link className={buttonBookStyle} to={`/book/${this.props.match.params.user_id}`}>Book</Link></li>
               </Display>
               <Display toggle={this.state.currentUser && this.state.currentUser.id === this.state.id}>
