@@ -17,11 +17,11 @@ class Header extends React.Component {
     // eslint-disable-next-line
     const user = eval('(' + sessionStorage.user + ')');
     return(
-      <header className="bg-white py-5 text-black border-b">
-        <div className="container mx-auto flex">
+      <header className="bg-white py-3 text-black border-b border-gray-200">
+        <div className="container mx-auto flex items-center">
           <div className="mr-auto">
             <Link className="hover:underline" to="/">
-              <h1>Maven</h1>
+              <span className="text-3xl"><i className="fab fa-medium"></i></span>
             </Link>
           </div>
           <div>
