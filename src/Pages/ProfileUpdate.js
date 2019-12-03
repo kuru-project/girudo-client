@@ -54,11 +54,11 @@ class ProfileUpdate extends React.Component {
     Axios.get(`https://maven-server-bos.herokuapp.com/user/${user.id}`)
       .then((response) => {
         this.setState({
-          name: response.data[0].name,
-          contactNumber: response.data[0].contactNumber,
-          skill: response.data[0].skill,
-          isAdmin: response.data[0].isAdmin,
-          isArtist: response.data[0].isArtist
+          name: response.data.name,
+          contactNumber: response.data.contactNumber,
+          skill: response.data.skill,
+          isAdmin: response.data.isAdmin,
+          isArtist: response.data.isArtist
         })
       })
       .catch((error) => {
