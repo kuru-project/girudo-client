@@ -1,6 +1,9 @@
 import React from 'react'
 import { Helmet } from "react-helmet"
 import Axios from 'axios'
+import { createSnackbar } from '@snackbar/core'
+import '@snackbar/core/dist/snackbar.css'
+import { Link } from 'react-router-dom'
 
 class ProfileUpdate extends React.Component {
   constructor(props) {
@@ -51,7 +54,7 @@ class ProfileUpdate extends React.Component {
   componentDidMount() {
     // eslint-disable-next-line
     const user = eval('(' + sessionStorage.user + ')');
-    Axios.get(`https://maven-server-bos.herokuapp.com/user/${user.id}`)
+    Axios.get(`https://maven-server-bos.herokuapp.com/user/${this.props.match.params.user_id}`)
       .then((response) => {
         this.setState({
           name: response.data.name,
@@ -67,39 +70,65 @@ class ProfileUpdate extends React.Component {
   }
 
   render() {
-    const inputFieldStyle = "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-5"
-    const buttonStyle     = "block w-full text-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
     return (
-      <div className="my-5">
+      <div className="container mx-auto py-5 my-auto">
         <Helmet>
           <title>Update Profile</title>
         </Helmet>
-        <form>
-          <div>
-            <label>
-              Is admin:
-              <input
-                name="isAdmin"
-                type="checkbox"
-                checked={this.state.isAdmin}
-                onChange={this.handleChange} />
-            </label>
+        <div className="w-full max-w-sm mx-auto">
+          <div className="mb-5">
+            {/* Icon from: https://www.iconfinder.com/iconsets/japan-flat-2 */}
+            <img src="/icons/login.png" className="mx-auto max-w-full" alt="Log In" />
           </div>
-          <div>
-            <label>
-              Is artist:
-              <input
-                name="isArtist"
-                type="checkbox"
-                checked={this.state.isArtist}
-                onChange={this.handleChange} />
-            </label>
-          </div>
-          <input className={inputFieldStyle} onChange={this.handleChange} name="name" value={this.state.name} />
-          <input className={inputFieldStyle} onChange={this.handleChange} name="contactNumber" value={this.state.contactNumber} />
-          <input className={inputFieldStyle} onChange={this.handleChange} name="skill" value={this.state.skill} />
-          <button className={buttonStyle} onClick={this.handleSubmit}>Submit</button>
-        </form>
+          <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+            <div>
+              <label>
+                Is admin:
+                <input
+                  name="isAdmin"
+                  type="checkbox"
+                  checked={this.state.isAdmin}
+                  onChange={this.handleChange} />
+              </label>
+            </div>
+            <div>
+              <label>
+                Is artist:
+                <input
+                  name="isArtist"
+                  type="checkbox"
+                  checked={this.state.isArtist}
+                  onChange={this.handleChange} />
+              </label>
+            </div>
+            <div className="mb-4">
+              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
+                Full Name
+              </label>
+              <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" onChange={this.handleChange} name="name" id="name" value={this.state.name} />
+            </div>
+            <div className="mb-4">
+              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="contact_number">
+                Contact Number
+              </label>
+              <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" onChange={this.handleChange} name="contactNumber" id="contact_number" value={this.state.contactNumber} />
+            </div>
+            <div className="mb-4">
+              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="skill">
+                Skill
+              </label>
+              <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" onChange={this.handleChange} name="skill" id="skill" value={this.state.skill} />
+            </div>
+            <div className="flex items-center justify-between">
+              <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" onClick={this.handleSubmit}>
+                Update Profile
+              </button>
+              <Link className="inline-block align-baseline font-bold text-sm text-red-500 hover:text-red-800" to="/register">
+                Delete Account
+              </Link>
+            </div>
+          </form>
+        </div>
       </div>
     )
   }
