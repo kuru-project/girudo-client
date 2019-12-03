@@ -97,29 +97,9 @@ class ProfileUpdate extends React.Component {
         <div className="w-full max-w-sm mx-auto">
           <div className="mb-5">
             {/* Icon from: https://www.iconfinder.com/iconsets/japan-flat-2 */}
-            <img src="/icons/login.png" className="mx-auto max-w-full" alt="Log In" />
+            <img src="/icons/update-profile.png" className="mx-auto max-w-full" alt="Update Profile" />
           </div>
           <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-            <div>
-              <label>
-                Is admin:
-                <input
-                  name="isAdmin"
-                  type="checkbox"
-                  checked={this.state.isAdmin}
-                  onChange={this.handleChange} />
-              </label>
-            </div>
-            <div>
-              <label>
-                Is artist:
-                <input
-                  name="isArtist"
-                  type="checkbox"
-                  checked={this.state.isArtist}
-                  onChange={this.handleChange} />
-              </label>
-            </div>
             <div className="mb-4">
               <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
                 Full Name
@@ -131,6 +111,29 @@ class ProfileUpdate extends React.Component {
                 Contact Number
               </label>
               <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" onChange={this.handleChange} name="contactNumber" id="contact_number" value={this.state.contactNumber} />
+            </div>
+            <div className="block text-gray-700 text-sm font-bold mb-2">Roles</div>
+            <div className="flex mb-4">
+              <div className="mr-5">
+                <label>
+                  <input
+                    name="isAdmin"
+                    type="checkbox"
+                    checked={this.state.isAdmin}
+                    onChange={this.handleChange} />
+                  <span className="ml-3">Admin</span>
+                </label>
+              </div>
+              <div>
+                <label>
+                  <input
+                    name="isArtist"
+                    type="checkbox"
+                    checked={this.state.isArtist}
+                    onChange={this.handleChange} />
+                  <span className="ml-3">Artist</span>
+                </label>
+              </div>
             </div>
             <div className="mb-4">
               <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="skill">

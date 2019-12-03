@@ -48,7 +48,7 @@ class Register extends React.Component {
         <div className="w-full max-w-sm mx-auto">
           <div className="mb-5">
             {/* Icon from: https://www.iconfinder.com/iconsets/japan-flat-2 */}
-            <img src="/icons/register.png" className="mx-auto max-w-full" alt="Log In" />
+            <img src="/icons/register.png" className="mx-auto max-w-full" alt="Register" />
           </div>
           <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
             <div className="mb-4">
