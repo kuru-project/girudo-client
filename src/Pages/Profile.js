@@ -77,7 +77,7 @@ class Profile extends React.Component {
           <title>Profile</title>
         </Helmet>
         <div className="bg-cover bg-gray-300 mb-10 h-32 md:h-48 lg:h-64 bg-center" style={{ backgroundImage: `url(${this.state.coverPhoto})` }}></div>
-        <div className="flex items-center mb-5 container mx-auto">
+        <div className="flex items-center mb-5 container mx-auto border-b pb-5">
           <div className="mr-5 max-w-full w-64">
             <img src={ this.state.profilePhoto } className="max-w-full rounded-full w-32 m-auto" alt={ this.state.name } />
           </div>
@@ -117,6 +117,9 @@ class Profile extends React.Component {
               <p>{ this.state.description }</p>
             </div>
           </div>
+        </div>
+        <div className="container mx-auto mb-5">
+          <div className="text-center">Under maintenance</div>
         </div>
       </div>
     )
