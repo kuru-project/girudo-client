@@ -31,7 +31,6 @@ class Homepage extends React.Component {
         </Helmet>
         <h1 className="text-3xl mb-5">Artists</h1>
         "{process.env.REACT_APP_SERVER_URL}"
-        "{process.env.REACT_APP_NETLIFY}"
         <ul>
           {this.state.artists.map((artist, index) => {
             return (
