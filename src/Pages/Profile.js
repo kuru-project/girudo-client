@@ -80,7 +80,7 @@ class Profile extends React.Component {
         <div className="bg-cover bg-gray-300 mb-10 h-32 md:h-48 lg:h-64 bg-center" style={{ backgroundImage: `url(${this.state.coverPhoto})` }}></div>
         <div className="flex items-center mb-5 container mx-auto border-b pb-5">
           <div className="mr-5 max-w-full w-64">
-            <img src={ this.state.profilePhoto } className="max-w-full rounded-full w-32 m-auto" alt={ this.state.name } />
+            <img src={ this.state.profilePhoto } className="rounded-full w-32 h-32 m-auto" alt={ this.state.name } />
           </div>
           <div className="flex-1 ml-5">
             <div className="w-64 overflow-hidden max-w-full">
