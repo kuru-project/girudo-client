@@ -10,6 +10,7 @@ class Profile extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      port: process.env.REACT_APP_SERVER_URL || "http://localhost:4000",
       // eslint-disable-next-line
       currentUser: sessionStorage.length ? eval('(' + sessionStorage.user + ')') : false,
       id: '',
@@ -27,7 +28,7 @@ class Profile extends React.Component {
   }
 
   deleteUser(event) {
-    Axios.delete(`https://maven-server-bos.herokuapp.com/user/${this.props.match.params.user_id}/destroy`, {
+    Axios.delete(`${ this.state.port }/user/${this.props.match.params.user_id}/destroy`, {
       headers: {
         'x-auth-token': sessionStorage.token
       }
@@ -46,7 +47,7 @@ class Profile extends React.Component {
   }
 
   componentDidMount() {
-    Axios.get(`https://maven-server-bos.herokuapp.com/user/${this.props.match.params.user_id}`)
+    Axios.get(`${ this.state.port }/user/${this.props.match.params.user_id}`)
       .then((response) => {
         this.setState({
           id: response.data._id,
@@ -74,7 +75,7 @@ class Profile extends React.Component {
     return (
       <div className="flex-1">
         <Helmet>
-          <title>Profile</title>
+          <title>{ this.state.name } | Maven</title>
         </Helmet>
         <div className="bg-cover bg-gray-300 mb-10 h-32 md:h-48 lg:h-64 bg-center" style={{ backgroundImage: `url(${this.state.coverPhoto})` }}></div>
         <div className="flex items-center mb-5 container mx-auto border-b pb-5">
