@@ -9,6 +9,7 @@ class Register extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      port: process.env.REACT_APP_SERVER_URL || "http://localhost:4000",
       name: '',
       email: '',
       password: ''
@@ -24,7 +25,7 @@ class Register extends React.Component {
   }
 
   handleSubmit(event) {
-    Axios.post('https://maven-server-bos.herokuapp.com/user/new', {
+    Axios.post(`${ this.state.port }/user/new`, {
       'name': this.state.name,
       'email': this.state.email,
       'password': this.state.password
@@ -43,7 +44,7 @@ class Register extends React.Component {
     return(
       <div className="container mx-auto py-5 my-auto">
         <Helmet>
-          <title>Register</title>
+          <title>Register | Maven</title>
         </Helmet>
         <div className="w-full max-w-sm mx-auto">
           <div className="mb-5">
