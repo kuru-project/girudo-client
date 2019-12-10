@@ -3,9 +3,10 @@ import { CardElement, injectStripe } from 'react-stripe-elements'
 
 const CheckoutForm = (props) => {
   const buttonStyle = "block mb-5 w-full text-center bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+  const port = process.env.REACT_APP_SERVER_URL || "http://localhost:4000"
   const submit = async (e) => {
     let { token } = await props.stripe.createToken({ name: "Name" })
-    let response = await fetch('https://maven-server-bos.herokuapp.com/charge', {
+    let response = await fetch(`${ port }/charge`, {
       method: "POST",
       headers: {"Content-type":"text-plain"},
       body: token.id
