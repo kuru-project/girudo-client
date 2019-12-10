@@ -9,6 +9,7 @@ class Login extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      port: process.env.REACT_APP_SERVER_URL || "http://localhost:4000",
       email: '',
       password: ''
     }
@@ -23,7 +24,7 @@ class Login extends React.Component {
   }
 
   handleSubmit(event) {
-    Axios.post('https://maven-server-bos.herokuapp.com/login', {
+    Axios.post(`${ this.state.port }/login`, {
       'email': this.state.email,
       'password': this.state.password
     }).then(function(response) {
@@ -43,7 +44,7 @@ class Login extends React.Component {
     return(
       <div className="container mx-auto py-5 my-auto">
         <Helmet>
-          <title>Login</title>
+          <title>Login | Maven</title>
         </Helmet>
         <div className="w-full max-w-sm mx-auto">
           <div className="mb-5">
