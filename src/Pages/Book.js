@@ -57,8 +57,6 @@ class Book extends React.Component {
   }
 
   render() {
-    const inputFieldStyle = "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-5"
-    const buttonStyle     = "block w-full text-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
     // eslint-disable-next-line
     return (
       <div className="my-5">
