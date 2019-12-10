@@ -6,12 +6,13 @@ class ListBooks extends React.Component {
   constructor(props){
     super(props)
     this.state = {
+      port: process.env.REACT_APP_SERVER_URL || "http://localhost:4000",
       book: []
     }
   }
 
   componentDidMount() {
-    Axios.get('https://maven-server-bos.herokuapp.com/book')
+    Axios.get(`${ this.state.port }/book`)
       .then((response) => {
         this.setState({
           book: response.data
@@ -26,7 +27,7 @@ class ListBooks extends React.Component {
     return (
       <div className="my-5 container mx-auto flex-1">
         <Helmet>
-          <title>List of Bookings</title>
+          <title>List of Bookings | Maven</title>
         </Helmet>
         <h1 className="text-3xl mb-5">List of Bookings</h1>
         <ul>
