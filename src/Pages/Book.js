@@ -63,11 +63,10 @@ class Book extends React.Component {
         <Helmet>
           <title>Book | Maven</title>
         </Helmet>
-        {/* New Form */}
         <div className="w-full max-w-sm mx-auto">
           <div className="mb-5">
             {/* Icon from: https://www.iconfinder.com/iconsets/japan-flat-2 */}
-            <img src="/icons/update-profile.png" className="mx-auto max-w-full" alt="Update Profile" />
+            <img src="/icons/book.png" className="mx-auto max-w-full" alt="Update Profile" />
           </div>
           <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
             <div className="flex justify-center">
@@ -102,7 +101,6 @@ class Book extends React.Component {
             </div>
           </form>
         </div>
-        {/* New Form */}
       </div>
     )
   }
