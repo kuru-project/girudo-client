@@ -13,7 +13,7 @@ class Homepage extends React.Component {
   }
 
   componentDidMount() {
-    Axios.get('https://maven-server-bos.herokuapp.com/artist')
+    Axios.get(`${ this.state.port }/artist`)
       .then((response) => {
         this.setState({
           artists: response.data
@@ -31,7 +31,6 @@ class Homepage extends React.Component {
           <title>Homepage</title>
         </Helmet>
         <h1 className="text-3xl mb-5">Artists</h1>
-        { this.state.port }
         <ul>
           {this.state.artists.map((artist, index) => {
             return (
