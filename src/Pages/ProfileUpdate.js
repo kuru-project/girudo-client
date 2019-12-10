@@ -8,6 +8,7 @@ class ProfileUpdate extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      port: process.env.REACT_APP_SERVER_URL || "http://localhost:4000",
       name: '',
       contactNumber: '',
       skill: '',
@@ -23,7 +24,7 @@ class ProfileUpdate extends React.Component {
   }
 
   deleteUser(event) {
-    Axios.delete(`https://maven-server-bos.herokuapp.com/user/${this.props.match.params.user_id}/destroy`, {
+    Axios.delete(`${ this.state.port }/user/${this.props.match.params.user_id}/destroy`, {
       headers: {
         'x-auth-token': sessionStorage.token
       }
@@ -53,7 +54,7 @@ class ProfileUpdate extends React.Component {
 
   handleSubmit(event) {
     console.log(this.state)
-    Axios.patch(`https://maven-server-bos.herokuapp.com/user/${this.props.match.params.user_id}/update`, {
+    Axios.patch(`${ this.state.port }/user/${this.props.match.params.user_id}/update`, {
       'name': this.state.name,
       'contactNumber': this.state.contactNumber,
       'skill': this.state.skill,
@@ -82,7 +83,7 @@ class ProfileUpdate extends React.Component {
   componentDidMount() {
     // eslint-disable-next-line
     const user = eval('(' + sessionStorage.user + ')');
-    Axios.get(`https://maven-server-bos.herokuapp.com/user/${this.props.match.params.user_id}`)
+    Axios.get(`${ this.state.port }/user/${this.props.match.params.user_id}`)
       .then((response) => {
         this.setState({
           name: response.data.name,
@@ -107,7 +108,7 @@ class ProfileUpdate extends React.Component {
     return (
       <div className="container mx-auto py-5 my-auto">
         <Helmet>
-          <title>Update Profile</title>
+          <title>Update Profile | Maven</title>
         </Helmet>
         <div className="w-full max-w-sm mx-auto">
           <div className="mb-5">
