@@ -63,7 +63,7 @@ class Book extends React.Component {
     return (
       <div className="my-5">
         <Helmet>
-          <title>Book</title>
+          <title>Book | Maven</title>
         </Helmet>
         <form>
           <div>
