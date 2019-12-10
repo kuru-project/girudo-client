@@ -4,7 +4,7 @@ import Axios from 'axios'
 import DayPicker from 'react-day-picker'
 import 'react-day-picker/lib/style.css'
 import Moment from 'moment'
-import {Elements, StripeProvider} from 'react-stripe-elements';
+import { Elements, StripeProvider } from 'react-stripe-elements'
 import CheckoutForm from '../Components/CheckoutForm'
 
 class Book extends React.Component {
@@ -13,6 +13,7 @@ class Book extends React.Component {
     // eslint-disable-next-line
     const user = eval('(' + sessionStorage.user + ')');
     this.state = {
+      port: process.env.REACT_APP_SERVER_URL || "http://localhost:4000",
       date: Moment(new Date()).format("MM/DD/YYYY"),
       contactNumber: user.contactNumber,
       artistId: this.props.match.params.user_id,
@@ -37,7 +38,7 @@ class Book extends React.Component {
   }
 
   handleSubmit(event) {
-    Axios.post(`https://maven-server-bos.herokuapp.com/book/new`, {
+    Axios.post(`${ this.state.port }/book/new`, {
       'date': this.state.date,
       'contactNumber': this.state.contactNumber,
       'artistId': this.state.artistId,
