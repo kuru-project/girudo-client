@@ -7,7 +7,8 @@ class Homepage extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      artists: []
+      artists: [],
+      port: process.env.REACT_APP_SERVER_URL || "http://localhost:4000"
     }
   }
 
@@ -30,7 +31,7 @@ class Homepage extends React.Component {
           <title>Homepage</title>
         </Helmet>
         <h1 className="text-3xl mb-5">Artists</h1>
-        "{process.env.REACT_APP_SERVER_URL}"
+        { this.state.port }
         <ul>
           {this.state.artists.map((artist, index) => {
             return (
