@@ -28,7 +28,7 @@ class Homepage extends React.Component {
     return (
       <div className="my-5 container mx-auto flex-1">
         <Helmet>
-          <title>Homepage</title>
+          <title>Maven - Book an artist whenever you want!</title>
         </Helmet>
         <h1 className="text-3xl mb-5">Artists</h1>
         <ul>
