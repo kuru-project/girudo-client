@@ -34,7 +34,7 @@ class ListBooks extends React.Component {
           {this.state.book.map((book, index) => {
             return (
               <li key={index}>
-                {index+1}. { book.name }
+                {index+1}. { book._id }
               </li>
             )
           })}

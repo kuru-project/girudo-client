@@ -38,6 +38,7 @@ const CheckoutForm = ({ stripe, date, contactNumber, artistId, bookerId, locatio
 
   return (
     <div className="checkout">
+      <ReactTooltip />
       <div className="block text-gray-700 text-sm font-bold mb-2">
         <span>Payment Details</span><span className="ml-2 text-gray-500"><i className="fas fa-info-circle" data-tip="Card: 5200 8282 8282 8210 — Date: 11/23 — CVC: 652 — ZIP: 58501"></i></span>
       </div>
