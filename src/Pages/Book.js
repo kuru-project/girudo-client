@@ -63,14 +63,9 @@ class Book extends React.Component {
             </div>
             <div>
               <StripeProvider apiKey="pk_test_fzHvoH6sHiv0C595hdTUqt1L00AoGm1H9G">
-                <div>
-                  <h1 className="text-center py-5">Sample Payment</h1>
-                  <div className="d-flex justify-content-center">
-                    <Elements>
-                      <CheckoutForm date={ this.state.date } contactNumber={ this.state.contactNumber } artistId={ this.state.artistId } bookerId={ this.state.bookerId } location={ this.state.location } />
-                    </Elements>
-                  </div>
-                </div>
+                <Elements>
+                  <CheckoutForm date={ this.state.date } contactNumber={ this.state.contactNumber } artistId={ this.state.artistId } bookerId={ this.state.bookerId } location={ this.state.location } />
+                </Elements>
               </StripeProvider>
             </div>
           </div>

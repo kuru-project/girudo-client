@@ -1,6 +1,7 @@
 import React from 'react'
 import { CardElement, injectStripe } from 'react-stripe-elements'
 import Axios from 'axios'
+import ReactTooltip from 'react-tooltip'
 
 const CheckoutForm = ({ stripe, date, contactNumber, artistId, bookerId, location }) => {
   const buttonStyle = "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
@@ -37,11 +38,12 @@ const CheckoutForm = ({ stripe, date, contactNumber, artistId, bookerId, locatio
 
   return (
     <div className="checkout">
-      <p>Amount: 2500</p>
-      <p>Would you like to complete the purchase?</p>
-      <p>Sample Card: 5200 8282 8282 8210</p>
-      <p>Sample ZIP: 58501</p>
-      <CardElement />
+      <div className="block text-gray-700 text-sm font-bold mb-2">
+        <span>Payment Details</span><span className="ml-2 text-gray-500"><i className="fas fa-info-circle" data-tip="Card: 5200 8282 8282 8210 — Date: 11/23 — CVC: 652 — ZIP: 58501"></i></span>
+      </div>
+      <div className="shadow appearance-none border rounded w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-4">
+        <CardElement />
+      </div>
       <button className={buttonStyle} onClick={submit}>
         Book
       </button>
