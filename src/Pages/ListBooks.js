@@ -34,7 +34,13 @@ class ListBooks extends React.Component {
           {this.state.book.map((book, index) => {
             return (
               <li key={index}>
-                {index+1}. { book._id }
+                <div><span>Booker Name:</span> { book.booker.name }</div>
+                <div><span>Booker Contact Number:</span> { book.booker.contactNumber }</div>
+                <div><span>Artist Name:</span> { book.artist.name }</div>
+                <div><span>Artist Picture:</span> { book.artist.profilePhoto }</div>
+                <div><span>Artist Cover Photo:</span> { book.artist.coverPhoto }</div>
+                <div><span>Artist Description:</span> { book.artist.description }</div>
+                <div><span>Artist Skill:</span> { book.artist.skill }</div>
               </li>
             )
           })}
