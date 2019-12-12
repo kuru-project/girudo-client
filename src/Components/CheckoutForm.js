@@ -8,27 +8,30 @@ const CheckoutForm = ({ stripe, date, contactNumber, artistId, bookerId, locatio
   const submit = async (event) => {
     let { token } = await stripe.createToken({ name: "Name" })
 
-    let response = await fetch(`${ port }/charge`, {
-      method: "POST",
-      headers: {"Content-type":"text-plain"},
-      body: token.id
-    })
-
-    if (response.ok) {
-      Axios.post(`${ port }/book/new`, {
-        'date': date,
-        'contactNumber': contactNumber,
-        'artistId': artistId,
-        'bookerId': bookerId,
-        'location': location,
-        'status': "Approved"
-      }, {
-        headers: {
-          'x-auth-token': sessionStorage.token
-        }
-      }).then(function(_) {
-        window.location.replace('/');
+    if (token) {
+      let response = await fetch(`${ port }/charge`, {
+        method: "POST",
+        headers: {"Content-type":"text-plain"},
+        body: token.id
       })
+
+      if (response.ok) {
+        Axios.post(`${ port }/book/new`, {
+          'date': date,
+          'contactNumber': contactNumber,
+          'artistId': artistId,
+          'bookerId': bookerId,
+          'location': location
+        }, {
+          headers: {
+            'x-auth-token': sessionStorage.token
+          }
+        }).then(function(_) {
+          window.location.replace('/');
+        })
+      }
+    } else {
+      console.log("Token does not exist.")
     }
   }
 
