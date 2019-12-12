@@ -1,6 +1,5 @@
 import React from 'react'
 import { Helmet } from "react-helmet"
-import Axios from 'axios'
 import DayPicker from 'react-day-picker'
 import 'react-day-picker/lib/style.css'
 import Moment from 'moment'
