@@ -8,6 +8,7 @@ class Homepage extends React.Component {
     super(props)
     this.state = {
       artists: [],
+      users: [],
       port: process.env.REACT_APP_SERVER_URL || "http://localhost:4000"
     }
   }
@@ -22,6 +23,15 @@ class Homepage extends React.Component {
       .catch((error) => {
         console.log(error);
       })
+    Axios.get(`${ this.state.port }/user`)
+      .then((response) => {
+        this.setState({
+          users: response.data
+        })
+      })
+      .catch((error) => {
+        console.log(error);
+      })
   }
 
   render() {
@@ -30,16 +40,34 @@ class Homepage extends React.Component {
         <Helmet>
           <title>Maven - Book an artist whenever you want!</title>
         </Helmet>
-        <h1 className="text-3xl mb-5">Artists</h1>
-        <ul>
-          {this.state.artists.map((artist, index) => {
-            return (
-              <li key={index}>
-                {index+1}. <Link className="hover:underline" to={`/profile/${artist._id}`}>{ artist.name }</Link>
-              </li>
-            )
-          })}
-        </ul>
+        <div className="mb-5">
+          <h1 className="text-3xl mb-5">Artists</h1>
+          <ul>
+            {this.state.artists.map((artist, index) => {
+              return (
+                <li key={index} className="inline-block">
+                  <Link className="hover:underline" to={`/profile/${artist._id}`}>
+                    <img src={ artist.profilePhoto } alt={ artist.name } className="w-20 h-20 mr-3 rounded-full" title={ artist.name } />
+                  </Link>
+                </li>
+              )
+            })}
+          </ul>
+        </div>
+        <div className="mb-5">
+          <h1 className="text-3xl mb-5">Users</h1>
+          <ul>
+            {this.state.users.map((user, index) => {
+              return (
+                <li key={index} className="inline-block">
+                  <Link className="hover:underline" to={`/profile/${user._id}`}>
+                    <img src={ user.profilePhoto } alt={ user.name } className="w-20 h-20 mr-3 rounded-full" title={ user.name } />
+                  </Link>
+                </li>
+              )
+            })}
+          </ul>
+        </div>
       </div>
     )
   }
