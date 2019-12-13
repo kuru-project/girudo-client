@@ -31,7 +31,7 @@ class ListBooks extends React.Component {
         <Helmet>
           <title>List of Bookings | Maven</title>
         </Helmet>
-        <h1 className="text-3xl mb-5">List of Bookings</h1>
+        <h1 className="text-3xl text-center">List of Bookings</h1>
         <ul className="flex flex-wrap">
           {this.state.book.map((book, index) => {
             return (

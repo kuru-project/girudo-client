@@ -5,6 +5,7 @@ import Axios from 'axios'
 import { createSnackbar } from '@snackbar/core'
 import '@snackbar/core/dist/snackbar.css'
 import Display from '../Components/Display'
+import Moment from 'moment'
 
 class Profile extends React.Component {
   constructor(props) {
@@ -130,7 +131,28 @@ class Profile extends React.Component {
           </div>
         </div>
         <div className="container mx-auto mb-5">
-          <div className="text-center">Under maintenance</div>
+          <h1 className="text-3xl text-center">List of Bookers</h1>
+          <ul className="flex flex-wrap">
+            {this.state.book.map((book, index) => {
+              return (
+                <li key={index} className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-4 overflow-hidden">
+                  <Link to={`/profile/${ book.booker._id }`}>
+                    <div className="max-w-sm rounded overflow-hidden hover:shadow-lg smooth shadow bg-white">
+                      <div className="py-5 bg-cover bg-gray-300" style={{ backgroundImage: `url('${book.booker.coverPhoto}')` }}>
+                        <img src={book.booker.profilePhoto} alt={book.booker.profilePhoto} className="rounded-full h-20 mx-auto" />
+                      </div>
+                      <div className="p-5">
+                        <div className="mb-1"><span className="mr-1"><i className="far fa-calendar-alt"></i></span> { Moment(book.date).format("MMMM Do YYYY") || 'N/A' }</div>
+                        <div className="mb-2 pb-2 border-b border-gray-300"><span className="mr-1"><i className="fas fa-compass"></i></span> { book.location || 'N/A' }</div>
+                        <div className="mb-1"><span className="mr-1"><i className="fas fa-user"></i></span> { book.booker.name || 'N/A' }</div>
+                        <div><span className="mr-1"><i className="fas fa-phone-alt"></i></span> { book.booker.contactNumber || 'N/A' }</div>
+                      </div>
+                    </div>
+                  </Link>
+                </li>
+              )
+            })}
+          </ul>
         </div>
       </div>
     )
