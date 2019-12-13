@@ -37,13 +37,13 @@ class Homepage extends React.Component {
 
   render() {
     return (
-      <div className="bg-cover flex-1" style={ sessionStorage.length ? {} : { backgroundImage: "url('https://i.imgur.com/Y67tg2p.png')" } }>
-        <div className="my-5 container mx-auto">
+      <div className={ sessionStorage.length ? "flex-1" : "bg-cover flex-1 flex flex-col" } style={ sessionStorage.length ? {} : { backgroundImage: "url('https://i.imgur.com/Y67tg2p.png')" } }>
+        <div className={ sessionStorage.length ? "container mx-auto" : "container mx-auto my-auto" }>
           <Helmet>
             <title>Maven - Book an artist whenever you want!</title>
           </Helmet>
           <Display toggle={!(sessionStorage.length)}>
-            <div className="font-bebas-neue text-center my-32 xl:my-64">
+            <div className="font-bebas-neue text-center">
               <h2 className="text-6xl">Welcome to Maven!</h2>
               <h3 className="text-gray-500 text-3xl">Book an artist whenever you want!</h3>
             </div>
