@@ -47,7 +47,7 @@ class Homepage extends React.Component {
               return (
                 <li key={index} className="inline-block">
                   <Link className="hover:underline" to={`/profile/${artist._id}`}>
-                    <img src={ artist.profilePhoto } alt={ artist.name } className="w-20 h-20 mr-3 rounded-full" title={ artist.name } />
+                    <img src={ artist.profilePhoto } alt={ artist.name } className="w-20 h-20 mr-3 rounded-full hover:opacity-50 smooth" title={ artist.name } />
                   </Link>
                 </li>
               )
@@ -61,7 +61,7 @@ class Homepage extends React.Component {
               return (
                 <li key={index} className="inline-block">
                   <Link className="hover:underline" to={`/profile/${user._id}`}>
-                    <img src={ user.profilePhoto } alt={ user.name } className="w-20 h-20 mr-3 rounded-full" title={ user.name } />
+                    <img src={ user.profilePhoto } alt={ user.name } className="w-20 h-20 mr-3 rounded-full hover:opacity-50 smooth" title={ user.name } />
                   </Link>
                 </li>
               )
