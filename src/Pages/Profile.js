@@ -21,7 +21,8 @@ class Profile extends React.Component {
       isArtist: false,
       coverPhoto: '',
       profilePhoto: '',
-      description: ''
+      description: '',
+      book: []
     }
 
     this.deleteUser = this.deleteUser.bind(this)
@@ -60,6 +61,15 @@ class Profile extends React.Component {
           profilePhoto: response.data.profilePhoto,
           description: response.data.description
         })
+        Axios.get(`${ this.state.port }/book/${ response.data._id }/list`)
+          .then((response) => {
+            this.setState({
+              book: response.data
+            })
+          })
+          .catch((error) => {
+            console.log(error);
+          })
       })
       .catch((error) => {
         createSnackbar('Something went wrong!', {
