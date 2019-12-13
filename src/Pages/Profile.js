@@ -139,7 +139,7 @@ class Profile extends React.Component {
                   <Link to={`/profile/${ book.booker._id }`}>
                     <div className="max-w-sm rounded overflow-hidden hover:shadow-lg smooth shadow bg-white">
                       <div className="py-5 bg-cover bg-gray-300" style={{ backgroundImage: `url('${book.booker.coverPhoto}')` }}>
-                        <img src={book.booker.profilePhoto} alt={book.booker.profilePhoto} className="rounded-full h-20 mx-auto" />
+                        <img src={book.booker.profilePhoto} alt={book.booker.profilePhoto} className="rounded-full h-20 w-20 mx-auto" />
                       </div>
                       <div className="p-5">
                         <div className="mb-1"><span className="mr-1"><i className="far fa-calendar-alt"></i></span> { Moment(book.date).format("MMMM Do YYYY") || 'N/A' }</div>
